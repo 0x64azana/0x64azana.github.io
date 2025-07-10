@@ -1,0 +1,10 @@
+<Files "contacts.txt">
+    Require all denied
+</Files>
+
+<Files "submit.php">
+    <If "%{REQUEST_METHOD} != 'POST'">
+        Require all denied
+    </If>
+</Files>
+

