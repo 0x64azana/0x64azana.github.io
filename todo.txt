@@ -1,0 +1,7 @@
+[SITE EDITS]
+Home	Quick intro, what you offer, strong call-to-action (CTA)
+About	Who you are, your experience, why people should trust you
+Services	List and explain your offerings
+Projects/Portfolio	Show examples of past work (with images/descriptions)
+Contact	Form (already built!) and alternative contact options
+Testimonials	Quotes from clients (optional but great for trust)

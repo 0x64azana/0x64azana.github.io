@@ -1,0 +1,397 @@
+/* Base Styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Press Start 2P', monospace;
+  background: #111;
+  color: #0af;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Header & Navigation */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #111;
+  padding: 12px 24px;
+  border-bottom: 2px solid #f0f;
+  max-width: 100%;
+}
+
+.site-title {
+  color: #f0f;
+  text-decoration: none;
+  font-size: 20px;
+  margin: 0;
+}
+
+.site-title a {
+  color: #f0f;
+  text-decoration: none;
+}
+
+.site-title a.active {
+  border: 1px solid #f0f;
+}
+
+/* Navigation Menu */
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu li a {
+  color: #f0f;
+  text-decoration: none;
+  font-size: 12px;
+  padding: 6px 10px;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.nav-menu li a:hover,
+.nav-menu li a.active {
+  background-color: #111;
+  border: 1px solid #f0f;
+}
+
+/* Main Content */
+main {
+  padding: 20px;
+}
+
+/* General Headers Pink */
+h1, h2, h3,
+.post-section h2,
+.post-item h3,
+.post-list h1,
+.post-list h2 a,
+.post-list article h3 a {
+  color: #f0f !important;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid #333;
+  color: #0af;
+}
+
+footer a {
+  color: #f0f;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* CONTACT */
+.contact-section {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #f0f;
+  background-color: #111;
+  color: #0af;
+}
+
+.contact-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contact-form label {
+  font-size: 12px;
+  color: #f0f;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background: #111;
+  color: #0af;
+  border: 1px solid;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  padding: 6px;
+}
+
+.contact-form textarea.hover {
+  border-color: #f0f;
+  }
+
+.contact-form button {
+  display: inline-block !important;
+  width: auto !important;
+  max-width: none !important;
+  padding: 8px 16px;
+  margin: 10px auto 0 auto; /* top margin + center horizontally */
+  border: 1px solid #f0f;
+  background-color: transparent;
+  color: #f0f;
+  cursor: pointer;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  border-radius: 4px;
+}
+
+  
+.contact-form button:hover {
+  background-color: #000;
+  border-color: #f0f;
+}
+
+/* ABOUT */
+.about-section {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #f0f;
+  background-color: #111;
+  color: #0af;
+}
+
+.about-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.about-section p {
+  font-size: 12px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.about-section ul {
+  list-style-type: square;
+  padding-left: 20px;
+  margin: 10px 0;
+}
+
+.about-section li {
+  font-size: 11px;
+  margin-bottom: 8px;
+  color: #0af;
+}
+
+.about-section a {
+  color: #f0f;
+  text-decoration: none;
+}
+
+.about-section a:hover {
+  text-decoration: underline;
+}
+
+/* POSTS (renamed from PROJECTS) */
+.post-section {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #f0f;
+  background-color: #111;
+  color: #0af;
+}
+
+.post-section h2 {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.post-item {
+  margin-bottom: 24px;
+  border: 1px solid #f0f;
+  background-color: #111;
+  padding: 14px;
+}
+
+.post-item h3 {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+  color: #f0f;
+  
+}
+
+.post-item h3 a {
+  color: #f0f;
+  text-decoration: none;
+  margin: 0 0 8px 0;
+}
+
+.post-item h3 a:hover {
+  text-decoration: underline;
+}
+
+.post-item p {
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 0 0 10px 0;
+}
+
+.post-item strong {
+	color: #f0f;
+}
+
+/* PROXMOX */
+.vpn-request-section {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #f0f;
+  background-color: #111;
+  color: #0af;
+}
+
+.vpn-request-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.vpn-request-section p {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 12px;
+  color: #0af;
+}
+
+.vpn-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.vpn-form label {
+  font-size: 12px;
+  color: #f0f;
+}
+
+.vpn-form input,
+.vpn-form textarea {
+  background: #000;
+  color: #0af;
+  border: 1px solid #f0f;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  padding: 6px;
+}
+
+.vpn-form input[type="date"] {
+  font-family: monospace;
+}
+
+.vpn-form input:invalid {
+  border-color: #f44;
+}
+
+.vpn-form button {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 12px;
+  background-color: #111;
+  color: #f0f;
+  border: 1px solid #f0f;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.vpn-form button:hover {
+  background-color: #222;
+  border-color: #f0f;
+}
+
+/* NOTES */
+.post-header,
+.post-list h2 {
+  text-align: center;
+  color: #f0f;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.post-list article {
+  background-color: #111;
+  border: 1px solid #f0f;
+  padding: 14px;
+  margin-bottom: 20px;
+}
+
+.post-list article h3 a {
+  color: #f0f;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.post-list article h3 a:hover {
+  text-decoration: underline;
+}
+
+.post-list article p {
+  font-size: 16px;
+  color: #0af;
+  margin-top: 6px;
+}
+
+@media (max-width: 600px) {
+  html, body {
+    width: 100%;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+  }
+
+  .site-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .header-left,
+  .header-nav {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    gap: 8px;
+    list-style: none;
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+
+  .nav-menu li {
+    flex: 0 1 auto;
+  }
+
+  .nav-menu li a {
+    font-size: 10px;
+    padding: 6px 10px;
+    white-space: nowrap;
+    display: inline-block;
+  }
+}
+
