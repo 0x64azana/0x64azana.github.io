@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>0x64azana</title>
+  <link rel="stylesheet" href="../../../style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-left">
+      <h1 class="site-title"><a href="../../../about.html">0x64azana</a></h1>
+    </div>
+    <nav class="header-nav">
+      <ul class="nav-menu">
+        <li><a href="../../../index.html">Home</a></li>
+        <li><a href="../index.html" class="active">Insights</a></li>
+        <li><a href="../../projects/index.html">Projects</a></li>
+        <li><a href="../../../services.html">Services</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="projects-section">
+      <h2>Write up</h2>
+
+      <article class="post-item">
+        <h3 style="margin-top: 0;">Name</h3>
+        <p>TryHackMe | Shrek</p>
+
+        <h3>Writer</h3>
+        <p style="margin-bottom: 16px;">0x64azana</p>
+        <h3>Genre</h3>
+        <p style="margin-bottom: 24px;">Enumeration, Exploitation</p>
+
+        <p style="margin-bottom: 16px;">
+  <h3>OS</h3>
+  <p>9.11.4-P2-RedHat-9.11.4-9.P2.el7<br></p>
+  <h3>IP</h3>
+  <p>10.10.47.220<br></p>
+  <h3>HOSTNAME</h3>
+  <p>PANDA<br></p>
+  <h3>BASIC-INFO</h3>
+  <p>1 Hour to find as many flags as you can!<br></p>
+  <h3>USERS / EMAILS</h3>
+  <p>shifu<br>
+  po<br></p>
+  <h3>CREDENTIALS</h3>
+  <p>po : password1<br>
+  ??06d63d6798d9b6c2f987f045b12031d6??<br></p>
+  <p>====================================================================================<br></p>
+  <h3>NMAP-RESULTS</h3>
+  <p>init_<br>
+  22/tcp   open  ssh<br>
+  53/tcp   open  domain<br>
+  80/tcp   open  http<br>
+  139/tcp  open  netbios-ssn<br>
+  445/tcp  open  microsoft-ds<br>
+  3306/tcp open  mysql<br>
+  8009/tcp open  ajp13<br>
+  8080/tcp open  http-proxy<br>
+  9999/tcp open  abyss<br></p>
+  <p>nmap_<br>
+  22/tcp   open  ssh         syn-ack ttl 63 OpenSSH 7.4 (protocol 2.0)<br>
+  53/tcp   open  domain      syn-ack ttl 63 ISC BIND 9.11.4-P2 (RedHat Enterprise Linux 7)<br>
+  80/tcp   open  http        syn-ack ttl 63 Apache httpd 2.4.6 ((CentOS) PHP/5.6.40)<br>
+  139/tcp  open  netbios-ssn syn-ack ttl 63 Samba smbd 3.X - 4.X (workgroup: SAMBA)<br>
+  445/tcp  open  netbios-ssn syn-ack ttl 63 Samba smbd 4.9.1 (workgroup: SAMBA)<br>
+  1337/tcp open  http        syn-ack ttl 63 nginx 1.16.1<br>
+  3306/tcp open  mysql       syn-ack ttl 63 MariaDB 10.3.23 or earlier (unauthorized)<br>
+  8009/tcp open  ajp13       syn-ack ttl 63 Apache Jserv (Protocol v1.3)<br>
+  8080/tcp open  http        syn-ack ttl 63 Apache Tomcat/Coyote JSP engine 1.1<br>
+  9999/tcp open  http        syn-ack ttl 63 Golang net/http server<br></p>
+  <p>====================================================================================<br></p>
+  <h3>TO-TRY</h3>
+  <p>1. Test smb and netbios on 139 and 445			-> 6.<br>
+  2. gobuster on 80, 8080					-> 4.<br>
+  3. Review nmap output<br>
+  4. :80/flag/ contains a hex &gt; base64 &gt; flag		-- Found flag<br>
+  5. /robotstxt/ has a domain name, put it in /etc/hosts<br>
+  6. enum smb share 'Anonymous'				-- SUCCESSFUL -&gt; 7.<br>
+  7. Look for strings and run 'binary' (found in the share)- Found flag<br>
+  8. Enum dns						-&gt; 9.<br>
+  9. Crack found txt value<br>
+  10. brute force wordpress with the found users		-- SUCCESSFUL<br>
+  11. Log into wordpress as po<br></p>
+  <p>====================================================================================<br></p>
+  <h3>WEB-TECHS</h3>
+  <p>- Apache httpd 2.4.6<br>
+  - PHP/5.6.40<br>
+  - nginx 1.16.1<br></p>
+  <h3>SUBDIR-ENUMS</h3>
+  <p>dns1.panda.thm.<br>
+  ns1.panda.thm.<br>
+  hostmaster.panda.thm.<br></p>
+  <h3>DIR-ENUMERATIONS</h3>
+  <p>80_<br>
+  /cgi-bin/             (Status: 403) [Size: 210]<br>
+  /flag                 (Status: 301) [Size: 233] [--&gt; http://10.10.47.220/flag/]<br>
+  /robots.txt           (Status: 200) [Size: 10]<br>
+  /wordpress            (Status: 301) [Size: 238] [--&gt; http://10.10.47.220/wordpress/]<br>
+  /wordpress/wp-content           (Status: 301) [Size: 249] [--&gt; http://10.10.47.220/wordpress/wp-content/]<br>
+  /wordpress/wp-admin             (Status: 301) [Size: 247] [--&gt; http://10.10.47.220/wordpress/wp-admin/]<br>
+  /wordpress/wp-includes          (Status: 301) [Size: 250] [--&gt; http://10.10.47.220/wordpress/wp-includes/]<br></p>
+  <p>8080_<br>
+  /docs                 (Status: 302) [Size: 0] [--&gt; /docs/]<br>
+  /examples             (Status: 302) [Size: 0] [--&gt; /examples/]<br>
+  /favicon.ico          (Status: 200) [Size: 21630]<br>
+  /manager              (Status: 302) [Size: 0] [--&gt; /manager/]<br>
+  /plain]               (Status: 400) [Size: 0]<br>
+  /quote]               (Status: 400) [Size: 0]<br></p>
+  <p>====================================================================================<br></p>
+  <h3>TAKE-AWAYS</h3>
+  <p>Flags_<br>
+  /flag/<br>
+  d220a54fb2f0f088e7eb634fadcdd97f<br></p>
+  <p>smb Anonymous 'binary'_ <br>
+  6333685ba4ed33ed2a1836ae30c99fd6<br></p>
+  <p>====================================================================================<br></p>
+  <p>WordPress Administrator Account Discovered via Brute Force<br></p>
+  <p>Severity: High<br></p>
+  <p>Compliance Gap:<br>
+  - Weak password enforcement on admin accounts<br>
+  - No account lockout or rate limiting<br>
+  - Lack of monitoring for brute force attempts<br></p>
+  <p>Policy Violations:<br>
+  - Weak passwords violate security policies<br>
+  - No multi-factor authentication (MFA) on admins<br>
+  - Insufficient access controls<br></p>
+  <p>Impact:<br>
+  An attacker with admin credentials can:<br>
+  - Upload malicious plugins/themes (web shells)<br>
+  - Modify PHP files via dashboard editors<br>
+  - Gain persistent server access<br>
+  - Exfiltrate data or deface the site<br></p>
+  <p>Kill Chain:<br>
+  1.<br>
+  wpscan --url http://panda.thm/wordpress/ -U users -P /usr/share/wordlists/rockyou.txt<br></p>
+  <p>Remediations:<br>
+  - Enforce strong passwords on admins<br>
+  - Implement lockouts or rate limiting<br>
+  - Enable MFA for admin accounts<br>
+  - Disable dashboard file editing<br>
+  - Audit and update plugins/themes regularly<br>
+  - Monitor login attempts and alerts<br></p>
+    </section>
+  </main>
+  <p style="text-align:center">
+  I ran out of time before obtaining a shell or conducting privilege escalation.<br>
+  However the point of this is more-so to show what I'm capable of under a time limit.</p>
+  <footer>
+    <p><a href="https://x.com/0x64azana" target="_self">Twitter</a></p>
+  </footer>
+</body>
+</html>
+
